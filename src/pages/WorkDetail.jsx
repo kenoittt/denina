@@ -12,7 +12,7 @@ function Block({ block, seed }) {
     case 'image':
       return (
         <figure>
-          <Artwork src={block.src} alt={block.alt} seed={seed + block.src} ratio="auto" className="artwork--natural" />
+          <Artwork src={block.src} alt={block.alt} seed={seed + block.src} ratio="4 / 3" className="artwork--full" />
           {block.caption && <figcaption>{block.caption}</figcaption>}
         </figure>
       );
@@ -67,7 +67,7 @@ export default function WorkDetail() {
           ))}
         </div>
       ) : (
-        <Artwork src={work.image} alt={work.title} seed={work.id} ratio="4 / 3" className="work-article__cover" />
+        <Artwork src={work.image} alt={work.title} seed={work.id} ratio="4 / 3" className="artwork--full" />
       )}
     </article>
   );
