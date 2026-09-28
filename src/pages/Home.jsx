@@ -7,21 +7,17 @@ import Artwork from '../components/Artwork.jsx';
 import { artist } from '../content/site.js';
 import { publicWorks } from '../content/works.js';
 
-// One carousel card per image: each piece's cover plus its article photos.
+// One carousel card per artwork, using its cover image.
 // Mature work is excluded — the carousel draws in WebGL and can't be blurred.
-const showcase = [];
-const seen = new Set();
-for (const work of publicWorks) {
-  const images = [
-    work.image && { src: work.image, alt: work.title },
-    ...(work.article ?? []).filter(block => block.type === 'image').map(block => ({ src: block.src, alt: block.alt }))
-  ].filter(Boolean);
-  for (const image of images) {
-    if (seen.has(image.src)) continue;
-    seen.add(image.src);
-    showcase.push({ ...image, title: work.title, subtitle: [work.category, work.year].filter(Boolean).join(' · '), workId: work.id });
-  }
-}
+const showcase = publicWorks
+  .filter(work => work.image)
+  .map(work => ({
+    src: work.image,
+    alt: work.title,
+    title: work.title,
+    subtitle: [work.category, work.year].filter(Boolean).join(' · '),
+    workId: work.id
+  }));
 
 // Stable reference: Balatro rebuilds its WebGL context whenever `offset` changes
 // identity, and Home re-renders each time the carousel moves.
@@ -122,6 +118,7 @@ export default function Home() {
                 focusOnClick
                 captions
                 captureWheel={false}
+                loop={false}
                 onChange={(_, item) => setCurrent(item)}
               />
             </div>
