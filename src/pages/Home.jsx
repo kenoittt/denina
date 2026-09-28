@@ -72,7 +72,7 @@ export default function Home() {
         </div>
         <div className="hero__content">
           <WarpText
-            text={artist.heroText ?? artist.name}
+            text={artist.heroText ?? artist.alias ?? artist.name}
             color="#f8f5ff"
             warpStrength={0.08}
             warpScale={1.7}
@@ -86,7 +86,10 @@ export default function Home() {
             fontFamily="'Space Grotesk', sans-serif"
             className="hero__title"
           />
-          <p className="hero__tagline">{artist.tagline}</p>
+          <p className="hero__tagline">
+            {artist.alias && <span className="hero__name">{artist.name}</span>}
+            {artist.tagline}
+          </p>
           <div className="hero__actions">
             <Link to="/portfolio" className="button button--light">
               View portfolio
@@ -146,6 +149,7 @@ export default function Home() {
         <div>
           <p className="eyebrow">The artist</p>
           <h2>{artist.name}</h2>
+          {artist.alias && <p className="artist-feature__alias">Known online as {artist.alias}</p>}
           {artist.location && <p className="artist-feature__location">Based in {artist.location}</p>}
           {artist.bio.map(paragraph => (
             <p key={paragraph}>{paragraph}</p>

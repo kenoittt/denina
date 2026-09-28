@@ -225,6 +225,14 @@ p {
   max-width: 40ch;
 }
 
+.hero__name {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.6vw, 1.6rem);
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
@@ -621,6 +629,11 @@ p {
 
 .artist-feature .button {
   margin-top: 0.5rem;
+}
+
+.artist-feature__alias {
+  color: var(--gold);
+  font-weight: 600;
 }
 
 .artist-feature__location {
