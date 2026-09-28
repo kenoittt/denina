@@ -11,8 +11,72 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap"
       rel="stylesheet"
     />
+    <style>
+      /* Loading screen: inline so it paints before any JS or CSS bundle loads. */
+      html { background: #0a0a0a; }
+      #loader {
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        display: grid;
+        place-content: center;
+        justify-items: center;
+        gap: 14px;
+        padding: 16px;
+        background: #0a0a0a;
+        color: #f4f1ec;
+        text-align: center;
+        font-family: 'Space Grotesk', system-ui, sans-serif;
+        transition: opacity 0.6s ease, visibility 0.6s ease;
+      }
+      #loader.is-done { opacity: 0; visibility: hidden; }
+      .loader__name {
+        margin: 0;
+        font-size: clamp(3rem, 12vw, 6.5rem);
+        font-weight: 700;
+        letter-spacing: -0.04em;
+        line-height: 1;
+        animation: loader-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+      }
+      .loader__mantra {
+        margin: 0;
+        font-family: 'Inter', system-ui, sans-serif;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: #a7a7a7;
+        animation: loader-rise 0.9s 0.15s cubic-bezier(0.22, 1, 0.36, 1) both;
+      }
+      .loader__bar {
+        width: min(220px, 60vw);
+        height: 2px;
+        margin-top: 10px;
+        overflow: hidden;
+        background: rgb(255 255 255 / 0.12);
+      }
+      .loader__bar span {
+        display: block;
+        height: 100%;
+        background: #d7261e;
+        transform-origin: left;
+        animation: loader-fill 2.4s cubic-bezier(0.3, 0.6, 0.2, 1) forwards;
+      }
+      #loader.is-done .loader__bar span { animation: none; transform: scaleX(1); }
+      @keyframes loader-rise { from { opacity: 0; transform: translateY(12px); } }
+      @keyframes loader-fill { from { transform: scaleX(0); } to { transform: scaleX(0.9); } }
+      @media (prefers-reduced-motion: reduce) {
+        .loader__name, .loader__mantra, .loader__bar span { animation: none; }
+      }
+    </style>
   </head>
   <body>
+    <div id="loader" role="status" aria-live="polite">
+      <p class="loader__name">Gonda</p>
+      <p class="loader__mantra">Created to create</p>
+      <div class="loader__bar"><span></span></div>
+      <span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Loading…</span>
+    </div>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
