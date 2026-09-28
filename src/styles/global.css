@@ -361,9 +361,9 @@ p {
 }
 
 .artwork img {
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
 }
 
 .artwork__placeholder {
@@ -384,22 +384,28 @@ p {
   color: rgb(255 255 255 / 0.6);
 }
 
-.artwork--natural img {
-  height: auto;
+/* Article images: whole picture, sized to fit on screen, centred. */
+.artwork--full {
+  background: transparent;
 }
 
-.artwork--natural .artwork__placeholder {
-  aspect-ratio: 4 / 3;
+.artwork--full img {
+  width: auto;
+  max-width: 100%;
+  max-height: 85vh;
+  margin-inline: auto;
+  border-radius: var(--radius);
 }
 
 .work-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
-  gap: clamp(1.25rem, 3vw, 2rem);
+  columns: 3 280px;
+  column-gap: clamp(1.25rem, 3vw, 2rem);
 }
 
 .work-card {
   display: block;
+  break-inside: avoid;
+  margin-bottom: clamp(1.5rem, 3.5vw, 2.25rem);
 }
 
 .work-card .artwork {
@@ -629,6 +635,10 @@ p {
 
 .artist-feature .button {
   margin-top: 0.5rem;
+}
+
+.artist-feature .statement {
+  margin: 1.5rem 0 2rem;
 }
 
 .artist-feature__alias {

@@ -8,8 +8,9 @@ function hueFor(seed = '') {
 }
 
 /**
- * An image that falls back to a styled placeholder when there's no src yet
- * or the file hasn't been uploaded. `mature` blurs it behind an 18+ label.
+ * An artwork image shown at its own proportions, never cropped. Falls back to a
+ * styled placeholder (at `ratio`) when there's no src yet or the file hasn't
+ * been uploaded. `mature` blurs it behind an 18+ label.
  */
 export default function Artwork({ src, alt, seed, ratio = '4 / 5', mature = false, className = '' }) {
   const [failed, setFailed] = useState(false);
@@ -17,7 +18,7 @@ export default function Artwork({ src, alt, seed, ratio = '4 / 5', mature = fals
   const classes = ['artwork', mature && 'artwork--mature', className].filter(Boolean).join(' ');
 
   return (
-    <div className={classes} style={{ aspectRatio: ratio }}>
+    <div className={classes} style={showImage ? undefined : { aspectRatio: ratio }}>
       {showImage ? (
         <img src={src} alt={mature ? '' : alt} loading="lazy" onError={() => setFailed(true)} />
       ) : (

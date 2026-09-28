@@ -154,6 +154,7 @@ export default function Home() {
           {artist.bio.map(paragraph => (
             <p key={paragraph}>{paragraph}</p>
           ))}
+          {artist.statement && <blockquote className="statement">{artist.statement}</blockquote>}
           <Link to="/about" className="button button--light">
             More about the artist
           </Link>
