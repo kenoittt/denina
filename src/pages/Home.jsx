@@ -10,7 +10,7 @@ import { publicWorks } from '../content/works.js';
 // One carousel card per artwork, using its cover image.
 // Mature work is excluded — the carousel draws in WebGL and can't be blurred.
 const showcase = publicWorks
-  .filter(work => work.image)
+  .filter(work => work.image && work.showcase !== false)
   .map(work => ({
     src: work.image,
     alt: work.title,
