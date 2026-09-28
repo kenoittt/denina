@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Balatro from '../components/reactbits/Balatro.jsx';
 import WarpText from '../components/reactbits/WarpText.jsx';
@@ -27,9 +27,38 @@ for (const work of publicWorks) {
 // identity, and Home re-renders each time the carousel moves.
 const HERO_OFFSET = [0, 0];
 
+// Resolves to the showcase items whose image file actually loads, so pieces
+// that haven't been uploaded yet don't show up as blank cards.
+function loadAvailable(items) {
+  return Promise.all(
+    items.map(
+      item =>
+        new Promise(resolve => {
+          const image = new Image();
+          image.onload = () => resolve(item);
+          image.onerror = () => resolve(null);
+          image.src = item.src;
+        })
+    )
+  ).then(results => results.filter(Boolean));
+}
+
 export default function Home() {
   const backgroundRef = useRef(null);
-  const [current, setCurrent] = useState(showcase[0]);
+  const [available, setAvailable] = useState(null);
+  const [current, setCurrent] = useState(null);
+
+  useEffect(() => {
+    let alive = true;
+    loadAvailable(showcase).then(items => {
+      if (!alive) return;
+      setAvailable(items);
+      setCurrent(items[0] ?? null);
+    });
+    return () => {
+      alive = false;
+    };
+  }, []);
 
   // The headline sits on top of the Balatro canvas and swallows mouse events,
   // so pass mouse movement over the hero down to the background as well.
@@ -79,11 +108,11 @@ export default function Home() {
           <p className="intro__text">{artist.intro}</p>
         </div>
 
-        {showcase.length > 0 && (
+        {available?.length > 0 && (
           <>
             <div className="showcase__carousel">
               <FlexCarousel
-                items={showcase}
+                items={available}
                 preset="liquid"
                 intro="rise"
                 cardHeight={0.5}

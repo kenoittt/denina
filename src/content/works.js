@@ -24,6 +24,63 @@ const PLASTER = 'images/works/plaster-relief';
 export const works = [
   {
     // Working title — replace once the artist names it.
+    id: 'red-fursuit',
+    title: 'Untitled (Red Fursuit Head)',
+    year: '2026',
+    category: 'Fursuit',
+    medium: 'Faux fur, foam, mesh',
+    image: 'images/works/red-fursuit/01.webp',
+    summary:
+      'A handmade fursuit head in deep red and white faux fur, with flame-gradient horns and star-shaped eyes.',
+    article: [
+      {
+        type: 'text',
+        body: 'Deep red and white faux fur, with bright yellow markings on the ears, brow and muzzle. The horns are painted in a flame gradient from red to gold, and a fine chain drapes across the brow between them. The eyes are mesh with a red-and-gold star design.'
+      },
+      {
+        type: 'image',
+        src: 'images/works/red-fursuit/01.webp',
+        alt: 'Fursuit head with dark red and white fur, yellow markings, flame-coloured horns and star-patterned eyes, seen from the front',
+        caption: 'Front view.'
+      },
+      {
+        type: 'image',
+        src: 'images/works/red-fursuit/02.webp',
+        alt: 'The same fursuit head seen from slightly further back, showing the ears and horns',
+        caption: 'The full head, ears to ruff.'
+      }
+    ]
+  },
+  {
+    // Working title — replace once the artist names it.
+    id: 'wolf-fursuit',
+    title: 'Untitled (Wolf Fursuit Head)',
+    year: '2026',
+    category: 'Fursuit',
+    medium: 'Faux fur, foam, mesh',
+    image: 'images/works/wolf-fursuit/01.jpg',
+    summary: 'A snarling black wolf fursuit head with red and white markings and rows of sculpted soft teeth.',
+    article: [
+      {
+        type: 'text',
+        body: 'Black faux fur with red and white markings on the brow and ears. The open, snarling mouth is lined with rows of soft sculpted teeth, a chain drapes across the brow, and the mesh eyes carry a red-and-gold star design.'
+      },
+      {
+        type: 'image',
+        src: 'images/works/wolf-fursuit/01.jpg',
+        alt: 'Black wolf fursuit head with red markings and an open mouth full of white fabric teeth, seen from the side',
+        caption: 'Three-quarter view.'
+      },
+      {
+        type: 'image',
+        src: 'images/works/wolf-fursuit/02.jpg',
+        alt: 'The black wolf fursuit head seen from the front-left, showing the snarl and teeth',
+        caption: 'The snarl.'
+      }
+    ]
+  },
+  {
+    // Working title — replace once the artist names it.
     id: 'clay-relief',
     title: 'Untitled (Clay Relief)',
     year: '2026',
@@ -91,6 +148,26 @@ export const works = [
     ]
   },
   {
+    // Working title — replace once the artist names it.
+    id: 'watermelon-study',
+    title: 'Watermelon Study',
+    year: '2026',
+    category: 'Drawing',
+    medium: 'Graphite on paper',
+    image: 'images/works/watermelon-study.jpg',
+    summary:
+      'An observational graphite drawing of a watermelon slice from a photo reference, working out the seeds, the grain of the flesh and the rind in tone alone.'
+  },
+  {
+    id: 'untitled-crocodile',
+    title: 'Untitled (Crocodile)',
+    year: '2026',
+    category: 'Illustration',
+    medium: 'Digital sketch',
+    image: 'images/works/untitled-crocodile.jpg',
+    summary: 'A digital character sketch: a big, laughing crocodile in fried-egg print boxers.'
+  },
+  {
     id: 'untitled-blue',
     title: 'Untitled (Blue)',
     year: '2026',
@@ -110,9 +187,29 @@ export const works = [
     summary: 'Digital character illustration. Details coming soon.',
     nsfw: true
   },
+  {
+    id: 'untitled-green',
+    title: 'Untitled (Green)',
+    year: '2026',
+    category: 'Illustration',
+    medium: 'Digital illustration',
+    image: 'images/works/untitled-green.jpg',
+    summary: 'Digital character illustration. Details coming soon.',
+    nsfw: true
+  },
+  {
+    id: 'untitled-pool',
+    title: 'Untitled (Pool Day)',
+    year: '2026',
+    category: 'Illustration',
+    medium: 'Digital illustration',
+    image: 'images/works/untitled-pool.jpg',
+    summary: 'Digital character illustration: a lazy summer afternoon on a pool float. Details coming soon.',
+    nsfw: true
+  }
 ];
 
-// Everything safe to show on the home page (carousel, featured).
+// Everything safe to show on the home page (carousel).
 export const publicWorks = works.filter(work => !work.nsfw);
 
 export const getWork = id => works.find(work => work.id === id);
