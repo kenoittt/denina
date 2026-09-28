@@ -29,7 +29,7 @@ export const artist = {
   location: null,
 
   // Path to a portrait in /public, e.g. 'images/portrait.jpg'. null shows a placeholder.
-  portrait: null,
+  portrait: 'images/portrait.jpg',
 
   // About page: each string is one paragraph.
   bio: [
