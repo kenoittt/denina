@@ -9,7 +9,7 @@ export default function Layout() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = artist.name;
+    document.title = artist.alias ? `${artist.alias} · ${artist.name}` : artist.name;
   }, [pathname]);
 
   return (

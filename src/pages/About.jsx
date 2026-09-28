@@ -8,6 +8,7 @@ export default function About() {
   return (
     <>
       <PageIntro eyebrow="About" title={artist.name}>
+        {artist.alias && <p>Known online as {artist.alias}.</p>}
         <p>{artist.tagline}</p>
       </PageIntro>
 

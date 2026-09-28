@@ -17,7 +17,7 @@ export default function Header() {
     <header className="site-header">
       <div className="container site-header__inner">
         <Link to="/" className="brand">
-          {artist.name}
+          {artist.alias ?? artist.name}
         </Link>
         <GooeyNav
           items={gooeyItems}
