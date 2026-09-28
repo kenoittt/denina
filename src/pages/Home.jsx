@@ -19,7 +19,7 @@ for (const work of publicWorks) {
   for (const image of images) {
     if (seen.has(image.src)) continue;
     seen.add(image.src);
-    showcase.push({ ...image, title: work.title, subtitle: `${work.category} · ${work.year}`, workId: work.id });
+    showcase.push({ ...image, title: work.title, subtitle: [work.category, work.year].filter(Boolean).join(' · '), workId: work.id });
   }
 }
 

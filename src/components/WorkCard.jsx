@@ -14,9 +14,7 @@ export default function WorkCard({ work }) {
           {work.title}
           {work.nsfw && <span className="badge badge--inline">18+</span>}
         </h3>
-        <p>
-          {work.category} · {work.year}
-        </p>
+        <p>{[work.category, work.year].filter(Boolean).join(' · ')}</p>
       </div>
     </Link>
   );

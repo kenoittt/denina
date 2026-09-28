@@ -4,7 +4,7 @@
  * Fields:
  *   id          unique slug, used in the URL
  *   title       artwork / project title
- *   year        '2026'
+ *   year        '2026', or null if unknown
  *   category    used for the Portfolio filter
  *   medium      'Graphite on paper', 'Carved plaster', ...
  *   dimensions  optional, e.g. '120 × 90 cm'
@@ -23,59 +23,50 @@ const PLASTER = 'images/works/plaster-relief';
 
 export const works = [
   {
-    // Working title — replace once the artist names it.
-    id: 'red-fursuit',
-    title: 'Untitled (Red Fursuit Head)',
-    year: '2026',
+    id: 'crimson-grin',
+    title: 'Crimson Grin',
+    year: null,
     category: 'Fursuit',
-    medium: 'Faux fur, foam, mesh',
-    image: 'images/works/red-fursuit/01.webp',
+    medium: 'Mixed Media / Fursuit Construction',
+    image: 'images/works/crimson-grin/01.webp',
     summary:
-      'A handmade fursuit head in deep red and white faux fur, with flame-gradient horns and star-shaped eyes.',
+      'A handmade character head combining deep red, yellow, black, and white materials to create a bold and expressive creature design. The piece explores character construction through texture, color contrast, sculptural form, and wearable art.',
     article: [
       {
-        type: 'text',
-        body: 'Deep red and white faux fur, with bright yellow markings on the ears, brow and muzzle. The horns are painted in a flame gradient from red to gold, and a fine chain drapes across the brow between them. The eyes are mesh with a red-and-gold star design.'
-      },
-      {
         type: 'image',
-        src: 'images/works/red-fursuit/01.webp',
-        alt: 'Fursuit head with dark red and white fur, yellow markings, flame-coloured horns and star-patterned eyes, seen from the front',
+        src: 'images/works/crimson-grin/01.webp',
+        alt: 'Character head in dark red and white faux fur with yellow markings, flame-coloured horns and star-patterned eyes, seen from the front',
         caption: 'Front view.'
       },
       {
         type: 'image',
-        src: 'images/works/red-fursuit/02.webp',
-        alt: 'The same fursuit head seen from slightly further back, showing the ears and horns',
+        src: 'images/works/crimson-grin/02.webp',
+        alt: 'The same character head seen from slightly further back, showing the ears and horns',
         caption: 'The full head, ears to ruff.'
       }
     ]
   },
   {
-    // Working title — replace once the artist names it.
-    id: 'wolf-fursuit',
-    title: 'Untitled (Wolf Fursuit Head)',
+    id: 'satire',
+    title: 'Satire',
     year: '2026',
     category: 'Fursuit',
-    medium: 'Faux fur, foam, mesh',
-    image: 'images/works/wolf-fursuit/01.jpg',
-    summary: 'A snarling black wolf fursuit head with red and white markings and rows of sculpted soft teeth.',
+    medium: 'Mixed Media / Fabric, Faux Fur, Foam, and Other Materials',
+    image: 'images/works/satire/01.jpg',
+    summary:
+      'This piece is a handmade character head created through the combination of sculptural construction, fabric, faux fur, and painted details. The use of bold red, yellow, and white creates a strong and playful visual identity, while the exaggerated facial features give the character a distinctive personality. The work explores character design, craftsmanship, texture, and the transformation of an imagined character into a physical three-dimensional artwork.',
     article: [
       {
-        type: 'text',
-        body: 'Black faux fur with red and white markings on the brow and ears. The open, snarling mouth is lined with rows of soft sculpted teeth, a chain drapes across the brow, and the mesh eyes carry a red-and-gold star design.'
-      },
-      {
         type: 'image',
-        src: 'images/works/wolf-fursuit/01.jpg',
-        alt: 'Black wolf fursuit head with red markings and an open mouth full of white fabric teeth, seen from the side',
+        src: 'images/works/satire/01.jpg',
+        alt: 'Black character head with red markings and an open mouth full of white fabric teeth, seen from the side',
         caption: 'Three-quarter view.'
       },
       {
         type: 'image',
-        src: 'images/works/wolf-fursuit/02.jpg',
-        alt: 'The black wolf fursuit head seen from the front-left, showing the snarl and teeth',
-        caption: 'The snarl.'
+        src: 'images/works/satire/02.jpg',
+        alt: 'The black character head seen from the front-left, showing the grin and teeth',
+        caption: 'The grin.'
       }
     ]
   },
@@ -159,13 +150,14 @@ export const works = [
       'An observational graphite drawing of a watermelon slice from a photo reference, working out the seeds, the grain of the flesh and the rind in tone alone.'
   },
   {
-    id: 'untitled-crocodile',
-    title: 'Untitled (Crocodile)',
-    year: '2026',
+    id: 'dinos-day-off',
+    title: 'Dino’s Day Off',
+    year: null,
     category: 'Illustration',
-    medium: 'Digital sketch',
-    image: 'images/works/untitled-crocodile.jpg',
-    summary: 'A digital character sketch: a big, laughing crocodile in fried-egg print boxers.'
+    medium: 'Digital Illustration',
+    image: 'images/works/dinos-day-off.jpg',
+    summary:
+      'A humorous digital illustration of a large green dinosaur-like character relaxing in a casual outfit decorated with playful egg patterns. The exaggerated proportions, expressive pose, and bright color palette create a lighthearted character-focused composition.'
   },
   {
     id: 'untitled-blue',
@@ -188,23 +180,25 @@ export const works = [
     nsfw: true
   },
   {
-    id: 'untitled-green',
-    title: 'Untitled (Green)',
-    year: '2026',
+    id: 'bound-in-red',
+    title: 'Bound in Red',
+    year: null,
     category: 'Illustration',
-    medium: 'Digital illustration',
-    image: 'images/works/untitled-green.jpg',
-    summary: 'Digital character illustration. Details coming soon.',
+    medium: 'Digital Illustration',
+    image: 'images/works/bound-in-red.jpg',
+    summary:
+      'A stylized character illustration featuring a large green wolf-like figure decorated with red ropes and ornaments. The contrast between the muted green and warm red creates a strong visual identity, while the character’s pose and expression give the piece a playful and confident atmosphere.',
     nsfw: true
   },
   {
-    id: 'untitled-pool',
-    title: 'Untitled (Pool Day)',
-    year: '2026',
+    id: 'summer-float',
+    title: 'Summer Float',
+    year: null,
     category: 'Illustration',
-    medium: 'Digital illustration',
-    image: 'images/works/untitled-pool.jpg',
-    summary: 'Digital character illustration: a lazy summer afternoon on a pool float. Details coming soon.',
+    medium: 'Digital Illustration',
+    image: 'images/works/summer-float.jpg',
+    summary:
+      'A playful digital illustration of a bear relaxing in a swimming pool surrounded by colorful inflatable balls and pool toys. The bright colors, rounded forms, and relaxed pose create a cheerful summer atmosphere while emphasizing the character’s large and expressive figure.',
     nsfw: true
   }
 ];
