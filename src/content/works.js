@@ -121,9 +121,9 @@ export const works = [
       },
       {
         type: 'image',
-        src: `${PLASTER}/03-pouring.jpg`,
+        src: `${PLASTER}/03-casting.jpg`,
         alt: 'Oval and square molds filled with wet white plaster',
-        caption: 'Freshly poured, oval and square.'
+        caption: 'Casting: the oval and square molds, freshly filled.'
       },
       { type: 'heading', text: 'Drawing the design' },
       {
