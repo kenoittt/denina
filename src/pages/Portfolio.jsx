@@ -13,7 +13,7 @@ export default function Portfolio() {
   return (
     <>
       <PageIntro eyebrow="Portfolio" title="Work">
-        <p>Drawings, illustrations, color studies and mixed-media pieces. Open any piece to read about it.</p>
+        <p>Drawings, illustrations, sculpture and fursuits. Open any piece to read about it.</p>
       </PageIntro>
 
       <section className="section section--tight container">

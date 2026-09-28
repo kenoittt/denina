@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Balatro from '../components/reactbits/Balatro.jsx';
 import WarpText from '../components/reactbits/WarpText.jsx';
@@ -7,29 +7,54 @@ import Artwork from '../components/Artwork.jsx';
 import { artist } from '../content/site.js';
 import { publicWorks } from '../content/works.js';
 
-// One carousel card per image: each piece's cover plus its article photos.
+// One carousel card per artwork, using its cover image.
 // Mature work is excluded — the carousel draws in WebGL and can't be blurred.
-const showcase = [];
-const seen = new Set();
-for (const work of publicWorks) {
-  const images = [
-    work.image && { src: work.image, alt: work.title },
-    ...(work.article ?? []).filter(block => block.type === 'image').map(block => ({ src: block.src, alt: block.alt }))
-  ].filter(Boolean);
-  for (const image of images) {
-    if (seen.has(image.src)) continue;
-    seen.add(image.src);
-    showcase.push({ ...image, title: work.title, subtitle: `${work.category} · ${work.year}`, workId: work.id });
-  }
-}
+const showcase = publicWorks
+  .filter(work => work.image)
+  .map(work => ({
+    src: work.image,
+    alt: work.title,
+    title: work.title,
+    subtitle: [work.category, work.year].filter(Boolean).join(' · '),
+    workId: work.id
+  }));
 
 // Stable reference: Balatro rebuilds its WebGL context whenever `offset` changes
 // identity, and Home re-renders each time the carousel moves.
 const HERO_OFFSET = [0, 0];
 
+// Resolves to the showcase items whose image file actually loads, so pieces
+// that haven't been uploaded yet don't show up as blank cards.
+function loadAvailable(items) {
+  return Promise.all(
+    items.map(
+      item =>
+        new Promise(resolve => {
+          const image = new Image();
+          image.onload = () => resolve(item);
+          image.onerror = () => resolve(null);
+          image.src = item.src;
+        })
+    )
+  ).then(results => results.filter(Boolean));
+}
+
 export default function Home() {
   const backgroundRef = useRef(null);
-  const [current, setCurrent] = useState(showcase[0]);
+  const [available, setAvailable] = useState(null);
+  const [current, setCurrent] = useState(null);
+
+  useEffect(() => {
+    let alive = true;
+    loadAvailable(showcase).then(items => {
+      if (!alive) return;
+      setAvailable(items);
+      setCurrent(items[0] ?? null);
+    });
+    return () => {
+      alive = false;
+    };
+  }, []);
 
   // The headline sits on top of the Balatro canvas and swallows mouse events,
   // so pass mouse movement over the hero down to the background as well.
@@ -79,11 +104,11 @@ export default function Home() {
           <p className="intro__text">{artist.intro}</p>
         </div>
 
-        {showcase.length > 0 && (
+        {available?.length > 0 && (
           <>
             <div className="showcase__carousel">
               <FlexCarousel
-                items={showcase}
+                items={available}
                 preset="liquid"
                 intro="rise"
                 cardHeight={0.5}
@@ -93,6 +118,7 @@ export default function Home() {
                 focusOnClick
                 captions
                 captureWheel={false}
+                loop={false}
                 onChange={(_, item) => setCurrent(item)}
               />
             </div>

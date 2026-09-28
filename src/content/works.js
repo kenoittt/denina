@@ -4,7 +4,7 @@
  * Fields:
  *   id          unique slug, used in the URL
  *   title       artwork / project title
- *   year        '2026'
+ *   year        '2026', or null if unknown
  *   category    used for the Portfolio filter
  *   medium      'Graphite on paper', 'Carved plaster', ...
  *   dimensions  optional, e.g. '120 × 90 cm'
@@ -22,6 +22,54 @@
 const PLASTER = 'images/works/plaster-relief';
 
 export const works = [
+  {
+    id: 'crimson-grin',
+    title: 'Crimson Grin',
+    year: null,
+    category: 'Fursuit',
+    medium: 'Mixed Media / Fursuit Construction',
+    image: 'images/works/crimson-grin/01.webp',
+    summary:
+      'A handmade character head combining deep red, yellow, black, and white materials to create a bold and expressive creature design. The piece explores character construction through texture, color contrast, sculptural form, and wearable art.',
+    article: [
+      {
+        type: 'image',
+        src: 'images/works/crimson-grin/01.webp',
+        alt: 'Character head in dark red and white faux fur with yellow markings, flame-coloured horns and star-patterned eyes, seen from the front',
+        caption: 'Front view.'
+      },
+      {
+        type: 'image',
+        src: 'images/works/crimson-grin/02.webp',
+        alt: 'The same character head seen from slightly further back, showing the ears and horns',
+        caption: 'The full head, ears to ruff.'
+      }
+    ]
+  },
+  {
+    id: 'satire',
+    title: 'Satire',
+    year: '2026',
+    category: 'Fursuit',
+    medium: 'Mixed Media / Fabric, Faux Fur, Foam, and Other Materials',
+    image: 'images/works/satire/01.jpg',
+    summary:
+      'This piece is a handmade character head created through the combination of sculptural construction, fabric, faux fur, and painted details. The use of bold red, yellow, and white creates a strong and playful visual identity, while the exaggerated facial features give the character a distinctive personality. The work explores character design, craftsmanship, texture, and the transformation of an imagined character into a physical three-dimensional artwork.',
+    article: [
+      {
+        type: 'image',
+        src: 'images/works/satire/01.jpg',
+        alt: 'Black character head with red markings and an open mouth full of white fabric teeth, seen from the side',
+        caption: 'Three-quarter view.'
+      },
+      {
+        type: 'image',
+        src: 'images/works/satire/02.jpg',
+        alt: 'The black character head seen from the front-left, showing the grin and teeth',
+        caption: 'The grin.'
+      }
+    ]
+  },
   {
     // Working title — replace once the artist names it.
     id: 'clay-relief',
@@ -91,6 +139,27 @@ export const works = [
     ]
   },
   {
+    // Working title — replace once the artist names it.
+    id: 'watermelon-study',
+    title: 'Watermelon Study',
+    year: '2026',
+    category: 'Drawing',
+    medium: 'Graphite on paper',
+    image: 'images/works/watermelon-study.jpg',
+    summary:
+      'An observational graphite drawing of a watermelon slice from a photo reference, working out the seeds, the grain of the flesh and the rind in tone alone.'
+  },
+  {
+    id: 'dinos-day-off',
+    title: 'Dino’s Day Off',
+    year: null,
+    category: 'Illustration',
+    medium: 'Digital Illustration',
+    image: 'images/works/dinos-day-off.jpg',
+    summary:
+      'A humorous digital illustration of a large green dinosaur-like character relaxing in a casual outfit decorated with playful egg patterns. The exaggerated proportions, expressive pose, and bright color palette create a lighthearted character-focused composition.'
+  },
+  {
     id: 'untitled-blue',
     title: 'Untitled (Blue)',
     year: '2026',
@@ -110,9 +179,31 @@ export const works = [
     summary: 'Digital character illustration. Details coming soon.',
     nsfw: true
   },
+  {
+    id: 'bound-in-red',
+    title: 'Bound in Red',
+    year: null,
+    category: 'Illustration',
+    medium: 'Digital Illustration',
+    image: 'images/works/bound-in-red.jpg',
+    summary:
+      'A stylized character illustration featuring a large green wolf-like figure decorated with red ropes and ornaments. The contrast between the muted green and warm red creates a strong visual identity, while the character’s pose and expression give the piece a playful and confident atmosphere.',
+    nsfw: true
+  },
+  {
+    id: 'summer-float',
+    title: 'Summer Float',
+    year: null,
+    category: 'Illustration',
+    medium: 'Digital Illustration',
+    image: 'images/works/summer-float.jpg',
+    summary:
+      'A playful digital illustration of a bear relaxing in a swimming pool surrounded by colorful inflatable balls and pool toys. The bright colors, rounded forms, and relaxed pose create a cheerful summer atmosphere while emphasizing the character’s large and expressive figure.',
+    nsfw: true
+  }
 ];
 
-// Everything safe to show on the home page (carousel, featured).
+// Everything safe to show on the home page (carousel).
 export const publicWorks = works.filter(work => !work.nsfw);
 
 export const getWork = id => works.find(work => work.id === id);

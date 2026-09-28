@@ -280,6 +280,7 @@ const FlexCarousel = ({
   interval = 4,
   captions = true,
   captureWheel = true,
+  loop = true,
   onChange,
   onSelect,
   className = '',
@@ -323,7 +324,8 @@ const FlexCarousel = ({
       focusOnClick,
       autoplay,
       interval,
-      captureWheel
+      captureWheel,
+      loop
     };
     engineRef.current?.wake();
   });
@@ -552,7 +554,17 @@ const FlexCarousel = ({
         centers.push(cursor + widths[i] / 2);
         cursor += widths[i] + s.gap;
       }
-      return { cardH, widths, centers, gap: s.gap, loop: Math.max(cursor, 1) };
+      // Local addition: with loop off, stretch the span far past the viewport so
+      // wrap() never folds the row and the copies drawn at ±loop stay off screen.
+      const span = Math.max(cursor, 1);
+      return {
+        cardH,
+        widths,
+        centers,
+        gap: s.gap,
+        loop: s.loop ? span : span + width * 8,
+        ends: s.loop ? null : [centers[0] ?? 0, centers[centers.length - 1] ?? 0]
+      };
     };
 
     const nearest = (m, at) => {
@@ -570,8 +582,10 @@ const FlexCarousel = ({
 
     const snapPoint = (m, at) => {
       const i = nearest(m, at);
-      return at + wrap(m.centers[i] - at, m.loop);
+      return clampEnds(m, at + wrap(m.centers[i] - at, m.loop));
     };
+
+    const clampEnds = (m, at) => (m.ends ? Math.min(Math.max(at, m.ends[0]), m.ends[1]) : at);
 
     const remap = (from, to, at) => {
       const i = nearest(from, at);
@@ -593,7 +607,7 @@ const FlexCarousel = ({
         at += distance;
         index = next;
       }
-      goal = at;
+      goal = clampEnds(m, at);
       mode = 'spring';
       dirty = true;
       start();
