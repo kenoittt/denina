@@ -68,7 +68,7 @@ export default function Home() {
     <>
       <section className="hero" onMouseMove={forwardMouse}>
         <div className="hero__background" ref={backgroundRef} aria-hidden="true">
-          <Balatro offset={HERO_OFFSET} isRotate={false} mouseInteraction={true} pixelFilter={700} />
+          <Balatro offset={HERO_OFFSET} color1="#D7261E" color2="#F2F2F2" color3="#0A0A0A" isRotate={false} mouseInteraction={true} pixelFilter={700} />
         </div>
         <div className="hero__content">
           <WarpText
