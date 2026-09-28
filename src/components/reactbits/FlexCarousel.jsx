@@ -732,7 +732,9 @@ const FlexCarousel = ({
       let animating = false;
 
       if (resnap) {
-        goal = snapPoint(m, goal);
+        // Local addition: without looping, open on the middle card so the row
+        // fills both sides instead of starting flush at one end.
+        goal = m.ends ? m.centers[Math.floor(m.centers.length / 2)] : snapPoint(m, goal);
         pos = goal;
         vel = 0;
         resnap = false;
