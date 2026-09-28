@@ -37,8 +37,9 @@ export const artist = {
     'My artworks are influenced by my personal experiences, imagination, interests, and the things I observe around me.'
   ],
 
-  // Pull quote on the About page. null hides it.
-  statement: 'An artist statement will go here.',
+  // The artist's mantra: pull quote on the About page and the home artist section.
+  // null hides it.
+  statement: 'Created to create.',
 
   // About page timeline: exhibitions, awards, residencies, press.
   // Example: { year: '2025', title: 'Solo show', detail: 'Gallery name, City' }

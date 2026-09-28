@@ -631,6 +631,10 @@ p {
   margin-top: 0.5rem;
 }
 
+.artist-feature .statement {
+  margin: 1.5rem 0 2rem;
+}
+
 .artist-feature__alias {
   color: var(--gold);
   font-weight: 600;
