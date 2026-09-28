@@ -11,6 +11,7 @@
  *   image       cover image path relative to /public, e.g. 'images/works/untitled-01.jpg'.
  *               null (or a file that isn't uploaded yet) shows a placeholder.
  *   summary     one or two sentences for the card and the top of the article
+ *   showcase    false keeps it out of the home page carousel (e.g. process write-ups)
  *   nsfw        true for 18+ work: blurred on cards, age check before the article opens,
  *               and never shown on the home page
  *   article     optional list of blocks rendered as the article body:
@@ -89,6 +90,8 @@ export const works = [
     category: 'Sculpture',
     medium: 'Carved plaster',
     image: `${PLASTER}/04-sketch.jpg`,
+    // Process write-up: the finished pieces are shown on the home page instead.
+    showcase: false,
     summary:
       'From a bag of plaster powder to a carved relief: casting blocks in handmade molds, then drawing a radiating design onto the surface to carve into.',
     article: [
@@ -135,6 +138,89 @@ export const works = [
         src: `${PLASTER}/04-sketch.jpg`,
         alt: 'Cured oval plaster block with a radiating sunburst design sketched in pencil, resting on newspaper beside carving tools',
         caption: 'The design sketched on the cured block, ready for carving.'
+      },
+      { type: 'heading', text: 'The finished reliefs' },
+      {
+        type: 'text',
+        body: 'Both blocks were then carved. The oval became a sunburst of radiating segments around a raised centre, framed by stepped chevrons; the square became a ring of eyes gathered around a toothed central form.'
+      },
+      {
+        type: 'image',
+        src: 'images/works/oval-relief/01.jpg',
+        alt: 'The finished oval plaster relief: a sunburst of radiating segments around a central dome, with chevrons above and below',
+        caption: 'The finished oval relief.'
+      },
+      {
+        type: 'image',
+        src: 'images/works/square-relief/01.jpg',
+        alt: 'The finished square plaster relief: several eyes arranged around a central form with a row of teeth',
+        caption: 'The finished square relief.'
+      }
+    ]
+  },
+  {
+    // Working title — replace once the artist names it.
+    id: 'oval-relief',
+    title: 'Untitled (Oval Relief)',
+    year: null,
+    category: 'Sculpture',
+    medium: 'Carved plaster',
+    image: 'images/works/oval-relief/01.jpg',
+    summary:
+      'A carved plaster relief on an oval block: a sunburst of radiating segments around a raised central dome, framed by stepped chevrons at the top and bottom.',
+    article: [
+      {
+        type: 'text',
+        body: 'Carved from the oval plaster block cast in the sculpture process. The design follows the sketch drawn onto the cured block: a circle of wedge-shaped segments fanning out from a smooth, rounded centre, each one separated by a crisp carved line.'
+      },
+      {
+        type: 'text',
+        body: 'Stepped chevrons point in from the top and bottom, and blocky, angular shapes break out past the edge of the oval, so the piece feels like it is pushing against its own frame. Seen from the side, the layers of depth show how much was cut away to leave the sunburst standing in relief.'
+      },
+      {
+        type: 'image',
+        src: 'images/works/oval-relief/01.jpg',
+        alt: 'Oval white plaster relief carved with a sunburst of radiating segments around a central dome, with chevrons above and below',
+        caption: 'Front view.'
+      },
+      {
+        type: 'image',
+        src: 'images/works/oval-relief/02.jpg',
+        alt: 'The oval plaster relief seen at an angle, showing the depth of the carved segments and chevrons',
+        caption: 'Seen at an angle, showing the depth of the carving.'
+      }
+    ]
+  },
+  {
+    // Working title — replace once the artist names it.
+    id: 'square-relief',
+    title: 'Untitled (Square Relief)',
+    year: null,
+    category: 'Sculpture',
+    medium: 'Carved plaster',
+    image: 'images/works/square-relief/01.jpg',
+    summary:
+      'A carved plaster relief on a square block: a ring of watchful eyes around a central form with a row of teeth, on a textured, pitted surface.',
+    article: [
+      {
+        type: 'text',
+        body: 'Carved from the square plaster block cast in the sculpture process. Set on its point like a diamond, the block is covered in eyes, each outlined in raised rings, all turned toward a lumpy central form edged with a curved row of teeth.'
+      },
+      {
+        type: 'text',
+        body: 'Where the oval relief is ordered and geometric, this one is organic and unsettling. The surface is left pitted and dotted rather than smoothed, and the edges swell and dip unevenly, so the whole block reads like a living thing looking back at the viewer.'
+      },
+      {
+        type: 'image',
+        src: 'images/works/square-relief/01.jpg',
+        alt: 'Square white plaster relief carved with several eyes arranged around a central form with a row of teeth',
+        caption: 'Front view.'
+      },
+      {
+        type: 'image',
+        src: 'images/works/square-relief/02.jpg',
+        alt: 'The square plaster relief seen at an angle, showing the raised eyes and textured surface',
+        caption: 'Seen at an angle, showing the raised eyes and texture.'
       }
     ]
   },
