@@ -74,7 +74,7 @@ export const works = [
   {
     // Working title — replace once the artist names it.
     id: 'clay-relief',
-    title: 'Untitled (Clay Relief)',
+    title: 'Clay Relief',
     year: '2026',
     category: 'Sculpture',
     medium: 'Clay relief',
@@ -161,7 +161,7 @@ export const works = [
   {
     // Working title — replace once the artist names it.
     id: 'oval-relief',
-    title: 'Untitled (Oval Relief)',
+    title: 'Oval Relief',
     year: null,
     category: 'Sculpture',
     medium: 'Carved plaster',
@@ -194,7 +194,7 @@ export const works = [
   {
     // Working title — replace once the artist names it.
     id: 'square-relief',
-    title: 'Untitled (Square Relief)',
+    title: 'Square Relief',
     year: null,
     category: 'Sculpture',
     medium: 'Carved plaster',
@@ -247,7 +247,7 @@ export const works = [
   },
   {
     id: 'untitled-blue',
-    title: 'Untitled (Blue)',
+    title: 'Blue',
     year: '2026',
     category: 'Illustration',
     medium: 'Digital illustration',
@@ -257,7 +257,7 @@ export const works = [
   },
   {
     id: 'untitled-red',
-    title: 'Untitled (Red)',
+    title: 'Red',
     year: '2026',
     category: 'Illustration',
     medium: 'Digital illustration',
